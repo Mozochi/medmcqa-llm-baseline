@@ -24,7 +24,7 @@ def json_to_dataframe(dir):
         df = pd.DataFrame() # Returning an empty DataFrame if no valid data
     return df
 
-def load_and_transform_json(dir, **kwargs): # dir: directory of json data,
+def load_and_transform_json(dir, **kwargs): # dir: directory of json data, optional kwargs: drop: returns a dataframe with the column removed (takes in column titles as a list), subject_match_rows: returns a dataframe with only the matching subjects (takes in subject names as a list)
     df = json_to_dataframe(dir) # Calling json_to_dataframe to load json data into a DataFrame
 
     for key, value in kwargs.items():
@@ -32,17 +32,14 @@ def load_and_transform_json(dir, **kwargs): # dir: directory of json data,
             match key:
                 case "drop": # Used to drop columns taking in the column titles
                     for title in value:
-                        df =df.drop(value, axis=1)
+                        df = df.drop(value, axis=1)
 
-                case "match_rows": # Used to only pass through rows that contain a keyword
-                    subject_df = df['subject_name'].str.contains(value, case=False, na=False) 
-                    subject_df = df[subject_df]  
+                case "subject_match_rows": # Used to only pass through rows that contain a keyword
+                    subject_df = pd.DataFrame()
+                    for subject in value:
+                        mask_df = df['subject_name'].str.contains(subject, case=False, na=False) 
+                        subject_df = pd.concat(objs=(df[mask_df], subject_df))
                     return subject_df
-                    
-                        
-        
-            
-
 
         except Exception as e:
             print(f"Error transforming database with key: {key}, value: {value}. Error: {e}")

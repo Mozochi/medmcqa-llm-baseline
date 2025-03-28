@@ -3,7 +3,7 @@ import pandas as pd
 
 #print(json_to_dataframe(r".\MedMCQA\test.json"))
 
-df = load_and_transform_json(r".\MedMCQA\test.json", match_rows="Pathology")
+df = load_and_transform_json(r".\MedMCQA\test.json", match_rows=["Pediatrics", "Microbiology"])
 
 _df_to_csv(df, "testing_csv")
 
