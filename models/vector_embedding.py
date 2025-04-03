@@ -44,3 +44,14 @@ class EmbeddingGenerator:
         except Exception as e:
             print(f"An error as occurred: {e}")
             return pd.DataFrame()
+        
+    def embed(self, text):
+        if isinstance(text, str):
+            text = [text]
+        try:
+            embeddings = self.generate_embeddings(text)
+            return embeddings[0]
+        except Exception as e:
+            print(f"An error as occurred: {e}")
+            return 0
+        
