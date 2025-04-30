@@ -3,10 +3,10 @@
 **1. Prerequisites:**
 Python 3.9+
 
- **Recommended:** A NVIDIA GPU with CUDA installed for reasonable performance, especially for training and Mistral inference.
+ **Recommended:** A NVIDIA GPU with CUDA installed for reasonable performance, especially for training and Mistral inference. < br / >
 
  **2. Clone the Repo**
- git clone https://github.com/Mozochi/medmcqa-llm-baseline
+ git clone https://github.com/Mozochi/medmcqa-llm-baseline < br / >
 
 **3. Create Virtual Environment (Recommended):**
 python -m venv venv
@@ -15,17 +15,17 @@ source venv/bin/activate
 ### Activate (Windows - Git Bash/WSL)
 source venv/Scripts/activate
 ### Activate (Windows - Cmd/PowerShell)
-.\venv\Scripts\activate
+.\venv\Scripts\activate < br / >
 
 **4. Install Dependencies**
-pip install -r requirements.txt
+pip install -r requirements.txt < br / >
 
 **5. Data**
 Download the MedMCQA dataset.
-Make sure the dev.json, test.json, and train.json files are placed inside the data/MedMCQA/ directory.
+Make sure the dev.json, test.json, and train.json files are placed inside the data/MedMCQA/ directory. < br / >
 
 **Usage**
-All commands should be run from the root directory of the project.
+All commands should be run from the root directory of the project. < br / >
 
 **Training FLAN-T5**
 This fine-tunes the Google FLAN-T5 small model on the 'train.json' dataset.
@@ -40,11 +40,11 @@ Options:
 --flan-epochs 3: Number of training epochs (adjust as needed).
 --flan-batch-size 8: Training batch size (adjust based on GPU memory).
 --flan-lr 2e-5: Learning rate (optional, defaults available).
---subjects Subject1 Subject2: (Optinoal) Train only on specific subjects.
+--subjects Subject1 Subject2: (Optinoal) Train only on specific subjects. < br / >
 
 
 **Running evaluation**
-These commands run inference on the 'test.json' dataset and calculate performance metrics. Results are printed and also saved to 'evaluation_results.csv' in the output directory.
+These commands run inference on the 'test.json' dataset and calculate performance metrics. Results are printed and also saved to 'evaluation_results.csv' in the output directory. < br / >
 
 Evaluate the Fine-tuned FLAN-T5:
 (Requires the training of the model (saved previously))
@@ -54,7 +54,7 @@ python evaluate_pipeline.py --eval-flan --flan-model-path ./mcqa_output/flan_t5_
 ```
 Options:
 --eval-flan: Flag to enable FLAN evaluation.
---flan-model-path ...: Crucial: Path to your saved fine-tuned FLAN model.
+--flan-model-path ...: Crucial: Path to your saved fine-tuned FLAN model. < br / >
 
 Evaluate Mistral (Zero-Shot):
 Command (Using default 4-bit quantization):
@@ -68,7 +68,7 @@ python evaluate_pipeline.py --eval-mistral --mistral-no-4bit --output-dir ./mcqa
 Options:
 --eval-mistral: Flag to enable Mistral evaluation.
 --mistral-model-id ...: (Optional) Specify a different Mistral model ID if needed.
---mistral-no-4bit: Disable 4-bit quantization.
+--mistral-no-4bit: Disable 4-bit quantization. < br / >
 
 Evaluate ComprehendIt (Zero-Shot):
 Command:
@@ -76,13 +76,14 @@ Command:
 python evaluate_pipeline.py --eval-comprehendit --output-dir ./mcqa_output
 ```
 Options:
---eval-comprehendit: Flag to enable ComprehendIt evaluation.
+--eval-comprehendit: Flag to enable ComprehendIt evaluation. < br / >
 
 Evaluate Multiple Models at Once:
 Command:
 ```bash
 python evaluate_pipeline.py --eval-flan --flan-model-path ./mcqa_output/flan_t5_finetuned/final_model --eval-mistral --eval-comprehendit --output-dir ./mcqa_output
 ```
+< br / >
 Evaluate on Specific Subjects:
 Command:
 ```bash
@@ -90,7 +91,7 @@ python evaluate_pipeline.py --eval-mistral --output-dir ./mcqa_output --subjects
 ```
 Options:
 --subjects ...: Filters the `test.json` data.
-
+< br / >
 **Running the Gradio Web UI**
 This launches an interactive interface in your browser.
 
@@ -101,7 +102,7 @@ python run.py
 ```
 Notes:
 Uses default paths (e.g., `./mcqa_output` for results CSV, `./mcqa_output/flan_t5_finetuned/final_model` for testing FLAN).
-Access the local URL printed in the console (usually `http://127.0.0.1:7860`).
+Access the local URL printed in the console (usually `http://127.0.0.1:7860`). < br / >
 
 Launch with Custom Paths:
 Command:
@@ -109,7 +110,7 @@ Command:
 python run.py --output-dir /path/to/results --flan-model-path /path/to/your/flan_model --data-dir /path/to/data
 ```
 Notes:
-Use these flags if your results, trained FLAN model, or MedMCQA data are not in the default locations.
+Use these flags if your results, trained FLAN model, or MedMCQA data are not in the default locations. < br / >
 
 
 **Results**
@@ -118,7 +119,7 @@ Results
 Evaluation results are:
 1. Printed to the console when running `evaluate_pipeline.py`.
 2. Saved to `evaluation_results.csv` within the specified `--output-dir`.
-3. Viewable in the "Summary Results" tab of the Gradio UI (after loading).
+3. Viewable in the "Summary Results" tab of the Gradio UI (after loading). < br / >
 
 
 **Acknowledgements**
