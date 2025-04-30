@@ -5,10 +5,8 @@ Python 3.9+
 
  **Recommended:** A NVIDIA GPU with CUDA installed for reasonable performance, especially for training and Mistral inference.
 
-**2. Clone Repository:**
-   ```bash
-   git clone <your-repo-url>
-   cd <repository-folder>
+ **2. Clone the Repo**
+ git clone https://github.com/Mozochi/medmcqa-llm-baseline
 
 **3. Create Virtual Environment (Recommended):**
 python -m venv venv
