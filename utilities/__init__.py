@@ -1,1 +1,1 @@
-from .data_utils import df_to_parquet, transform_dataset_to_parquet, load_and_transform_json, json_to_dataframe
+from data_utils import df_to_parquet, transform_dataset_to_parquet, load_and_transform_json, json_to_dataframe
