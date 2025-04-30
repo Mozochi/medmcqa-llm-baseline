@@ -29,10 +29,11 @@ All commands should be run from the root directory of the project.
 
 **Training FLAN-T5**
 This fine-tunes the Google FLAN-T5 small model on the 'train.json' dataset.
-
+bash
 Command:
+```bash
 python evaluate_pipeline.py --train-flan --output-dir ./mcqa_output --flan-epochs 3 --flan-batch-size 8
-
+```
 Options:
 --train-flan: Flag to enable training.
 --output-dir ./mcqa_output: Directory where the trained model and logs will be saved.
@@ -48,16 +49,22 @@ These commands run inference on the 'test.json' dataset and calculate performanc
 Evaluate the Fine-tuned FLAN-T5:
 (Requires the training of the model (saved previously))
 Command:
+```bash
 python evaluate_pipeline.py --eval-flan --flan-model-path ./mcqa_output/flan_t5_finetuned/final_model --output-dir ./mcqa_output
+```
 Options:
 --eval-flan: Flag to enable FLAN evaluation.
 --flan-model-path ...: Crucial: Path to your saved fine-tuned FLAN model.
 
 Evaluate Mistral (Zero-Shot):
 Command (Using default 4-bit quantization):
+```bash
 python evaluate_pipeline.py --eval-mistral --output-dir ./mcqa_output
+```
 Command (Without 4-bit quantization - needs more VRAM):
+```bash
 python evaluate_pipeline.py --eval-mistral --mistral-no-4bit --output-dir ./mcqa_output
+```
 Options:
 --eval-mistral: Flag to enable Mistral evaluation.
 --mistral-model-id ...: (Optional) Specify a different Mistral model ID if needed.
@@ -65,17 +72,22 @@ Options:
 
 Evaluate ComprehendIt (Zero-Shot):
 Command:
+```bash
 python evaluate_pipeline.py --eval-comprehendit --output-dir ./mcqa_output
+```
 Options:
 --eval-comprehendit: Flag to enable ComprehendIt evaluation.
 
 Evaluate Multiple Models at Once:
 Command:
+```bash
 python evaluate_pipeline.py --eval-flan --flan-model-path ./mcqa_output/flan_t5_finetuned/final_model --eval-mistral --eval-comprehendit --output-dir ./mcqa_output
-
+```
 Evaluate on Specific Subjects:
 Command:
+```bash
 python evaluate_pipeline.py --eval-mistral --output-dir ./mcqa_output --subjects Cardiology Neurology
+```
 Options:
 --subjects ...: Filters the `test.json` data.
 
@@ -84,14 +96,18 @@ This launches an interactive interface in your browser.
 
 Basic Launch:
 Command:
+```bash
 python run.py
+```
 Notes:
 Uses default paths (e.g., `./mcqa_output` for results CSV, `./mcqa_output/flan_t5_finetuned/final_model` for testing FLAN).
 Access the local URL printed in the console (usually `http://127.0.0.1:7860`).
 
 Launch with Custom Paths:
 Command:
+```bash
 python run.py --output-dir /path/to/results --flan-model-path /path/to/your/flan_model --data-dir /path/to/data
+```
 Notes:
 Use these flags if your results, trained FLAN model, or MedMCQA data are not in the default locations.
 
