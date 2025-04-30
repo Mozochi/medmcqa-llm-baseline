@@ -2,8 +2,8 @@
 
 **1. Prerequisites:**
 Python 3.9+
-`pip` for package installation
- **Recommended:** An NVIDIA GPU with CUDA installed for reasonable performance, especially for training and Mistral inference.
+
+ **Recommended:** A NVIDIA GPU with CUDA installed for reasonable performance, especially for training and Mistral inference.
 
 **2. Clone Repository:**
    ```bash
