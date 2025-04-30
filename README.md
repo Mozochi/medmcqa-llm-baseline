@@ -1,4 +1,4 @@
-## Setup
+# Setup
 
 **1. Prerequisites:**
 Python 3.9+
@@ -10,11 +10,11 @@ Python 3.9+
 
 **3. Create Virtual Environment (Recommended):**
 python -m venv venv
-# Activate (Linux/macOS)
+###Activate (Linux/macOS)
 source venv/bin/activate
-# Activate (Windows - Git Bash/WSL)
+### Activate (Windows - Git Bash/WSL)
 source venv/Scripts/activate
-# Activate (Windows - Cmd/PowerShell)
+### Activate (Windows - Cmd/PowerShell)
 .\venv\Scripts\activate
 
 **4. Install Dependencies**
