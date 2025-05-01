@@ -44,6 +44,9 @@ pip install -r requirements.txt
 Download the MedMCQA dataset.
 Make sure the dev.json, test.json, and train.json files are placed inside the data/MedMCQA/ directory. 
 
+<br/>
+<br/>
+
 ## **Usage**
 All commands should be run from the root directory of the project. 
 <br/>
