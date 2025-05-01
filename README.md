@@ -58,12 +58,12 @@ Command:
 python evaluate_pipeline.py --train-flan --output-dir ./mcqa_output --flan-epochs 3 --flan-batch-size 8
 ```
 Options:
---train-flan: Flag to enable training.
---output-dir ./mcqa_output: Directory where the trained model and logs will be saved.
---flan-epochs 3: Number of training epochs (adjust as needed).
---flan-batch-size 8: Training batch size (adjust based on GPU memory).
---flan-lr 2e-5: Learning rate (optional, defaults available).
---subjects Subject1 Subject2: (Optinoal) Train only on specific subjects. 
+* --train-flan: Flag to enable training.
+* --output-dir ./mcqa_output: Directory where the trained model and logs will be saved.
+* --flan-epochs 3: Number of training epochs (adjust as needed).
+* --flan-batch-size 8: Training batch size (adjust based on GPU memory).
+* --flan-lr 2e-5: Learning rate (optional, defaults available).
+* --subjects Subject1 Subject2: (Optinoal) Train only on specific subjects. 
 
 <br/>
 <br/>
@@ -80,8 +80,8 @@ Command:
 python evaluate_pipeline.py --eval-flan --flan-model-path ./mcqa_output/flan_t5_finetuned/final_model --output-dir ./mcqa_output
 ```
 Options:
---eval-flan: Flag to enable FLAN evaluation.
---flan-model-path ...: Crucial: Path to your saved fine-tuned FLAN model.
+* --eval-flan: Flag to enable FLAN evaluation.
+* --flan-model-path ...: Crucial: Path to your saved fine-tuned FLAN model.
 
 <br/>
 
@@ -95,9 +95,9 @@ Command (Without 4-bit quantization - needs more VRAM):
 python evaluate_pipeline.py --eval-mistral --mistral-no-4bit --output-dir ./mcqa_output
 ```
 Options:
---eval-mistral: Flag to enable Mistral evaluation.
---mistral-model-id ...: (Optional) Specify a different Mistral model ID if needed.
---mistral-no-4bit: Disable 4-bit quantization. 
+* --eval-mistral: Flag to enable Mistral evaluation.
+* --mistral-model-id ...: (Optional) Specify a different Mistral model ID if needed.
+* --mistral-no-4bit: Disable 4-bit quantization. 
 
 <br/>
 
@@ -107,7 +107,7 @@ Command:
 python evaluate_pipeline.py --eval-comprehendit --output-dir ./mcqa_output
 ```
 Options:
---eval-comprehendit: Flag to enable ComprehendIt evaluation. 
+* --eval-comprehendit: Flag to enable ComprehendIt evaluation. 
 
 <br/>
 
@@ -125,7 +125,7 @@ Command:
 python evaluate_pipeline.py --eval-mistral --output-dir ./mcqa_output --subjects Cardiology Neurology
 ```
 Options:
---subjects ...: Filters the `test.json` data.
+* --subjects ...: Filters the `test.json` data.
 
 <br/>
 <br/>
@@ -166,6 +166,19 @@ Evaluation results are:
 3. Viewable in the "Summary Results" tab of the Gradio UI (after loading).
 
 <br/>
+
+### Sample Results:
+Running on a I5-13600k and a RTX 4080:
+
+| Method                   | EM (%) | MRR    | BERTScore F1 (%) | Inference Time (HH:MM:SS) | Training Time (HH:MM:SS) |
+| :----------------------- | :----- | :----- | :--------------- | :------------------------ | :------------------------|
+| Fine-tuned FLAN-T5 Small | 34.33  | 0.34   | 71.79            |  00:01:20                 | 01:27:05                 |
+| Zero-shot Mistral-7B     | 36.82  | 0.37   | 71.43            |  00:37:41                 | N/A                      |
+| Zero-shot ComprehendIt   | 27.92  | 0.28   |  68.43           |  00:08:53                 | N/A                      |
+
+<br/>
+<br/>
+
 
 ## **Acknowledgements**
 
